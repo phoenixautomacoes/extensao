@@ -1,0 +1,8 @@
+/welcome    /welcome.html    200
+/goodbye    /goodbye.html    200
+/changelog  /index.html      200
+/premium    /index.html      200
+/issue      /index.html      200
+/ajuda      /index.html      200
+/help       /index.html      200
+/*          /index.html      200

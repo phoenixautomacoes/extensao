@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/welcome", "destination": "/welcome.html" },
+    { "source": "/goodbye", "destination": "/goodbye.html" },
+    { "source": "/changelog", "destination": "/index.html" },
+    { "source": "/premium", "destination": "/index.html" },
+    { "source": "/issue", "destination": "/index.html" },
+    { "source": "/ajuda", "destination": "/index.html" },
+    { "source": "/help", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

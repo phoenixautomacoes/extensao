@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phoenix Video Downloader — O Baixador e Capturador de Mídia Definitivo</title>
+  <meta name="description" content="Extensão inteligente para detectar, capturar e baixar qualquer fluxo de vídeo e áudio da web em velocidade máxima. HLS, m3u8, DASH, MP4 e 4K. Rápido, privado e seguro.">
+  <link rel="canonical" href="https://extensao.phoenixautomacoes.com.br/">
+  <meta property="og:title" content="Phoenix Video Downloader — Baixe Vídeos da Web em Alta Velocidade">
+  <meta property="og:description" content="Extensão inteligente para detectar, capturar e baixar qualquer fluxo de vídeo da web. Rápido, privado e seguro.">
+  <meta property="og:url" content="https://extensao.phoenixautomacoes.com.br/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            canvas: '#fafafa',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo-128-grey.png">
+</head>
+<body class="bg-canvas text-slate-800 font-sans antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- ================= TOP NOTIFICATION / ACCENT BAR ================= -->
+  <aside aria-label="Aviso de novidade" class="top-bar bg-slate-900 text-slate-200 text-xs sm:text-sm py-2 px-4 text-center border-b border-slate-800 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-semibold text-[11px] uppercase tracking-wider border border-cyan-500/30">
+      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+      Versão 10.5.49.7
+    </span>
+    <span>Novo motor multithread para fluxos <strong>HLS (m3u8)</strong> e <strong>DASH</strong> já disponível!</span>
+    <a href="#recursos" class="text-cyan-400 hover:text-cyan-300 underline font-medium ml-1 hidden md:inline">Saiba mais &rarr;</a>
+  </aside>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-200" id="navbar">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 min-h-[4.5rem] flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-lg p-1">
+        <img src="logo-128-grey.png" alt="Phoenix Video Downloader Logo" class="w-11 h-11 object-contain drop-shadow-sm transform group-hover:scale-110 transition-transform">
+        <div class="flex flex-col">
+          <span class="font-extrabold text-slate-900 text-lg tracking-tight leading-none">Phoenix <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-cyan-500">Video Downloader</span></span>
+          <span class="text-[11px] text-slate-600 font-medium tracking-wide">Extensão Oficial</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#recursos" class="hover:text-slate-900 transition-colors">Recursos</a>
+        <a href="#desempenho" class="hover:text-slate-900 transition-colors">Desempenho</a>
+        <a href="#privacidade" class="hover:text-slate-900 transition-colors">Privacidade</a>
+        <a href="#turbo" class="hover:text-slate-900 transition-colors">Modo Turbo</a>
+        <a href="#faq" class="hover:text-slate-900 transition-colors">Dúvidas</a>
+      </nav>
+
+      <!-- Desktop Action CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#faq" class="text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-2 transition-colors">
+          Suporte
+        </a>
+        <button onclick="openInstallModal()" class="btn-primary group flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm transition-all">
+          <!-- Chrome 4-color icon -->
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+            <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+            <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+            <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+            <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+            <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+          </svg>
+          <span>Baixar v10.5.49.7</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex md:hidden items-center gap-2">
+        <button onclick="openInstallModal()" class="flex items-center gap-1.5 bg-slate-900 text-white px-3 py-1.5 rounded-full text-xs font-semibold">
+          <span>Baixar v10.5.49.7</span>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Abrir menu" class="p-2 text-slate-700 hover:text-slate-900 rounded-lg focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white/95 backdrop-blur-md px-6 py-4 space-y-3">
+      <a href="#recursos" class="block text-slate-700 font-medium py-1.5" onclick="toggleMobileMenu()">Recursos</a>
+      <a href="#desempenho" class="block text-slate-700 font-medium py-1.5" onclick="toggleMobileMenu()">Desempenho</a>
+      <a href="#privacidade" class="block text-slate-700 font-medium py-1.5" onclick="toggleMobileMenu()">Privacidade</a>
+      <a href="#turbo" class="block text-slate-700 font-medium py-1.5" onclick="toggleMobileMenu()">Modo Turbo</a>
+      <a href="#faq" class="block text-slate-700 font-medium py-1.5" onclick="toggleMobileMenu()">Perguntas Frequentes</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <!-- Atmospheric subtle background glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[480px] bg-gradient-to-tr from-sky-200/50 via-cyan-100/40 to-blue-200/30 blur-3xl rounded-full -z-10 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      
+      <!-- Rating and Trust Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6 text-xs sm:text-sm text-slate-700 font-medium animate-fade-in">
+        <span class="flex text-amber-400 gap-0.5" aria-label="Avaliação 5 estrelas">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </span>
+        <span class="font-bold text-slate-900">4.9 / 5</span>
+        <span class="text-slate-400">•</span>
+        <span class="text-slate-600">Mais de 500 mil usuários satisfeitos</span>
+      </div>
+
+      <!-- Main Headline (Inspired by the reference architecture, tailored to Phoenix Video Downloader) -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12] mb-6">
+        Baixe qualquer vídeo, <br class="hidden sm:inline">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-cyan-500 to-blue-700">de qualquer lugar</span>
+      </h1>
+
+      <!-- Persuasive Subtitle -->
+      <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-9">
+        Uma extensão inteligente para detectar e salvar vídeos de quase qualquer site. <br class="hidden sm:inline">
+        <strong class="text-slate-800 font-semibold">Rápido. Eficiente. 100% Privado.</strong>
+      </p>
+
+      <!-- Dual Call to Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-8">
+        <button onclick="openInstallModal()" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-7 py-3.5 rounded-full text-base font-bold shadow-lg shadow-slate-900/15 hover:shadow-xl hover:shadow-slate-900/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+          <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+            <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+            <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+            <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+            <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+            <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+          </svg>
+          <span>Baixar Phoenix Video Downloader v10.5.49.7</span>
+        </button>
+
+        <a href="#demo-interativa" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-300 px-6 py-3.5 rounded-full text-base font-semibold transition-all">
+          <svg class="w-5 h-5 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Ver Demonstração</span>
+        </a>
+      </div>
+
+      <!-- Trust Checkpoints -->
+      <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-500 font-medium">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Gratuito
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Sem anúncios invasivos
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          100% verificado &amp; seguro
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Announcement Card (Like reference's featured banner) -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-12">
+      <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 border border-emerald-200/70 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+        <div class="flex items-center gap-3 text-left">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center flex-shrink-0 font-bold">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-emerald-700">Aceleração Nativa</p>
+            <p class="text-sm font-semibold text-slate-800">Suporte aprimorado para transmissões ao vivo, HLS (m3u8) e DASH com áudio unificado.</p>
+          </div>
+        </div>
+        <a href="#recursos" class="text-xs font-bold text-emerald-700 hover:text-emerald-800 whitespace-nowrap flex items-center gap-1">
+          Ver detalhes
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 1: SIMPLES POR DESIGN (Left Mockup, Right Content) ================= -->
+  <section id="recursos" class="py-16 md:py-24 border-t border-slate-100 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Realistic Browser Mockup with Phoenix extension active -->
+        <div class="lg:col-span-6 order-2 lg:order-1">
+          <div class="browser-window rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 overflow-hidden">
+            <!-- Browser Header Bar -->
+            <div class="bg-slate-100/90 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+              <div class="flex items-center gap-1.5 mr-2">
+                <div class="w-3 h-3 rounded-full bg-rose-400"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+              </div>
+              <!-- URL Bar -->
+              <div class="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-1 flex items-center gap-2 text-xs text-slate-500 shadow-xs">
+                <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span class="truncate font-mono text-[11px] text-slate-600">https://video-hub.com/watch?v=phoenix-stream</span>
+              </div>
+              <!-- Browser Extension Bar with Phoenix Icon Active -->
+              <div class="flex items-center gap-1.5 pl-1">
+                <div class="relative cursor-pointer p-1 rounded-md hover:bg-slate-200 transition-colors" title="Phoenix Video Downloader detectou mídia!">
+                  <!-- Phoenix icon with badge 1 -->
+                  <div class="w-8 h-8 flex items-center justify-center">
+                    <img src="logo-fenix2.png" alt="Phoenix Video Downloader" class="w-8 h-8 object-contain">
+                  </div>
+                  <!-- Notification Badge like user image -->
+                  <span class="absolute -top-1 -right-1 bg-sky-500 text-white font-bold text-[9px] w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-xs">1</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Browser Viewport (Webpage simulating video playing) -->
+            <div class="p-6 bg-slate-50 relative min-h-[280px] flex flex-col justify-between">
+              <!-- Video Player Mockup -->
+              <div class="relative w-full h-44 bg-slate-900 rounded-xl overflow-hidden shadow-inner flex items-center justify-center group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900 to-sky-950/70"></div>
+                <!-- Play button graphic -->
+                <div class="relative z-10 w-14 h-14 rounded-full bg-cyan-500/90 text-white flex items-center justify-center shadow-lg shadow-cyan-500/30 transform group-hover:scale-110 transition-transform cursor-pointer">
+                  <svg class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <!-- Bottom player bar overlay -->
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3 flex items-center justify-between text-white text-[11px]">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                    <span class="font-medium text-slate-300">Live Stream 1080p (HLS)</span>
+                  </div>
+                  <span class="font-mono text-slate-400">04:28 / 18:40</span>
+                </div>
+              </div>
+
+              <!-- Detection alert card inside browser -->
+              <div class="mt-4 bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">Fluxo de vídeo detectado automaticamente</div>
+                    <div class="text-[11px] text-slate-500">Formato: HLS .m3u8 • Resolução: 1080p Full HD</div>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-700 px-2 py-0.5 rounded">Pronto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Content -->
+        <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-50 text-cyan-700 text-xs font-bold tracking-wide uppercase">
+            Detecção Automática
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Simples por design
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Quando um vídeo é reproduzido em qualquer aba, o <strong class="text-slate-900">Phoenix Video Downloader</strong> identifica os fluxos em tempo real e acende na barra de ferramentas pronto para download.
+          </p>
+
+          <!-- Feature Bullets with green checks like reference -->
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-700 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Sem necessidade de copiar e colar links</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Download em 1 clique direto no navegador</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Detecta transmissões ao vivo, HLS e vídeos protegidos</span>
+            </li>
+          </ul>
+
+          <div class="pt-2">
+            <button onclick="openInstallModal()" class="btn-primary inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-sm transition-all">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+                <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+                <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+                <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+                <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+                <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+              </svg>
+              <span>Adicionar ao Chrome</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: PODEROSO E CONFIÁVEL (Text Left, Interactive Extension Mockup Right) ================= -->
+  <section id="desempenho" class="py-16 md:py-24 border-t border-slate-100 bg-slate-50/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Content -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold tracking-wide uppercase">
+            Múltiplas Resoluções &amp; Formatos
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Poderoso e confiável
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Seja em <strong class="text-slate-900">4K Ultra HD</strong>, Full HD ou apenas na faixa de áudio em MP3, você escolhe exatamente a qualidade e o formato ideal antes de baixar.
+          </p>
+
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-700 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Suporte a 4K, 1080p, 720p, 60fps e áudio isolado</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Mesclagem automática de áudio e vídeo em segundo plano</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Cálculo preciso de tamanho do arquivo e bitrate</span>
+            </li>
+          </ul>
+
+          <div class="pt-2">
+            <button onclick="openInstallModal()" class="btn-primary inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-sm transition-all">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+                <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+                <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+                <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+                <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+                <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+              </svg>
+              <span>Adicionar ao Chrome</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Extension Popup UI Mockup -->
+        <div class="lg:col-span-6" id="demo-interativa">
+          <div class="relative max-w-md mx-auto">
+            <!-- Simulated Browser Extension Card Container -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-2xl shadow-slate-300/60 overflow-hidden">
+              
+              <!-- Extension Popup Header -->
+              <div class="bg-slate-900 text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center gap-2.5">
+                  <img src="logo-fenix2.png" alt="Phoenix Video Downloader" class="w-8 h-8 object-contain">
+                  <span class="font-bold text-sm tracking-tight">Phoenix Video Downloader</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 px-2.5 py-0.5 rounded-full font-mono font-semibold">4 Vídeos</span>
+                  <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+                </div>
+              </div>
+
+              <!-- Stream List inside Popup (Interactive simulated downloads) -->
+              <div class="p-4 space-y-3 bg-slate-50/50">
+                
+                <!-- Stream 1: 4K UHD -->
+                <div class="stream-item bg-white border border-slate-200 rounded-xl p-3 shadow-xs hover:border-cyan-300 transition-all">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-[11px] font-bold">4K 2160p</span>
+                      <span class="text-xs font-semibold text-slate-800">Ultra High Definition</span>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">1.4 GB</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-500">
+                    <span>Formato: MP4 / H.264 • 60fps</span>
+                    <button onclick="simulateDownload(this, '4K Ultra HD')" class="download-trigger flex items-center gap-1.5 px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-medium text-xs transition-colors">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                      <span>Baixar</span>
+                    </button>
+                  </div>
+                  <!-- Progress bar element (hidden by default, shown when simulated) -->
+                  <div class="progress-container hidden mt-2.5">
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                      <div class="progress-bar bg-cyan-500 h-1.5 w-0 transition-all duration-200"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                      <span class="progress-status">Iniciando download multithread...</span>
+                      <span class="progress-pct">0%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stream 2: 1080p FHD (Highlighted / Popular) -->
+                <div class="stream-item bg-white border-2 border-sky-200/90 rounded-xl p-3 shadow-xs relative">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 bg-sky-100 text-sky-800 rounded text-[11px] font-bold">1080p 60fps</span>
+                      <span class="text-xs font-bold text-slate-800">Full HD (Recomendado)</span>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">620 MB</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-500">
+                    <span>Fluxo HLS mesclado automaticamente</span>
+                    <button onclick="simulateDownload(this, '1080p Full HD')" class="download-trigger flex items-center gap-1.5 px-3 py-1 bg-sky-600 hover:bg-sky-700 text-white rounded-lg font-medium text-xs transition-colors">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                      <span>Baixar</span>
+                    </button>
+                  </div>
+                  <!-- Progress bar element -->
+                  <div class="progress-container hidden mt-2.5">
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                      <div class="progress-bar bg-sky-500 h-1.5 w-0 transition-all duration-200"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                      <span class="progress-status">Iniciando download multithread...</span>
+                      <span class="progress-pct">0%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stream 3: 720p HD -->
+                <div class="stream-item bg-white border border-slate-200 rounded-xl p-3 shadow-xs hover:border-cyan-300 transition-all">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded text-[11px] font-bold">720p HD</span>
+                      <span class="text-xs font-semibold text-slate-800">Compacto / Rápido</span>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">285 MB</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-500">
+                    <span>Taxa de bits: 2.4 Mbps</span>
+                    <button onclick="simulateDownload(this, '720p HD')" class="download-trigger flex items-center gap-1.5 px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-medium text-xs transition-colors">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                      <span>Baixar</span>
+                    </button>
+                  </div>
+                  <!-- Progress bar element -->
+                  <div class="progress-container hidden mt-2.5">
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                      <div class="progress-bar bg-cyan-500 h-1.5 w-0 transition-all duration-200"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                      <span class="progress-status">Iniciando...</span>
+                      <span class="progress-pct">0%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stream 4: Audio MP3 Extraction -->
+                <div class="stream-item bg-white border border-slate-200 rounded-xl p-3 shadow-xs hover:border-cyan-300 transition-all">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 bg-amber-100 text-amber-800 rounded text-[11px] font-bold">Áudio MP3</span>
+                      <span class="text-xs font-semibold text-slate-800">Faixa Sonora Isolada</span>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">38 MB</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-500">
+                    <span>320 kbps • Qualidade máxima de som</span>
+                    <button onclick="simulateDownload(this, 'Áudio MP3')" class="download-trigger flex items-center gap-1.5 px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-medium text-xs transition-colors">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                      <span>Extrair</span>
+                    </button>
+                  </div>
+                  <!-- Progress bar element -->
+                  <div class="progress-container hidden mt-2.5">
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                      <div class="progress-bar bg-amber-500 h-1.5 w-0 transition-all duration-200"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                      <span class="progress-status">Extraindo áudio...</span>
+                      <span class="progress-pct">0%</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Popup Footer Info -->
+              <div class="bg-white border-t border-slate-100 px-4 py-2.5 flex items-center justify-between text-[11px] text-slate-500">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Captura direta do navegador
+                </span>
+                <span class="font-mono text-[10px] text-slate-600">v2.4.0 (Live)</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS / PROOF COUNTER BAR (Matching Reference Card) ================= -->
+  <section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-sm grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 text-center gap-6 md:gap-0">
+        
+        <!-- Stat 1 -->
+        <div class="px-4">
+          <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-mono">500k+</div>
+          <div class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Downloads e instalações ativas</div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="pt-6 md:pt-0 px-4">
+          <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-mono">99.8%</div>
+          <div class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Taxa de sucesso na captura de streams</div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="pt-6 md:pt-0 px-4">
+          <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-mono">1.500+</div>
+          <div class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Sites e reprodutores compatíveis</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: SUA PRIVACIDADE EM PRIMEIRO LUGAR (Left Mockup, Right Text) ================= -->
+  <section id="privacidade" class="py-16 md:py-24 border-t border-slate-100 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Privacy & Security Visual Card Mockup -->
+        <div class="lg:col-span-6 order-2 lg:order-1">
+          <div class="browser-window rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 overflow-hidden">
+            <!-- Mockup Header -->
+            <div class="bg-slate-100/90 border-b border-slate-200 px-4 py-3 flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-rose-400"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+              </div>
+              <div class="flex items-center gap-1 text-emerald-700 text-xs font-semibold">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Conexão Segura &amp; Local</span>
+              </div>
+            </div>
+
+            <!-- Content Area: Security Shield Graphics -->
+            <div class="p-8 bg-gradient-to-b from-slate-50 to-white text-center flex flex-col items-center justify-center min-h-[300px]">
+              <div class="relative mb-6">
+                <!-- Glowing Aura -->
+                <div class="absolute inset-0 bg-emerald-400/20 rounded-full blur-xl"></div>
+                <!-- Shield Icon Container -->
+                <div class="relative w-20 h-20 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shadow-sm">
+                  <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+              </div>
+
+              <h3 class="text-lg font-bold text-slate-900 mb-2">Processamento 100% Local</h3>
+              <p class="text-xs sm:text-sm text-slate-500 max-w-sm leading-relaxed mb-5">
+                Os dados nunca saem do seu computador. Os pacotes de streaming são reconstruídos diretamente pela API nativa do navegador.
+              </p>
+
+              <!-- Trust Points Checklist -->
+              <div class="w-full max-w-xs bg-white border border-slate-200 rounded-xl p-3 text-left space-y-2 text-xs font-medium text-slate-700 shadow-xs">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Zero logs de histórico de vídeo</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Nenhum servidor intermediário</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Sem login ou cadastro exigido</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Text Content -->
+        <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold tracking-wide uppercase">
+            Segurança &amp; Transparência
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Sua privacidade em primeiro lugar
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Diferente de serviços web e outras extensões que enviam o que você assiste para servidores de terceiros, o <strong class="text-slate-900">Phoenix Video Downloader</strong> opera diretamente na sua máquina.
+          </p>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Não coletamos dados pessoais, não criamos perfis de navegação e não injetamos anúncios ou scripts invasivos nas suas páginas.
+          </p>
+
+          <div class="pt-2">
+            <button onclick="openInstallModal()" class="btn-primary inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-sm transition-all">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+                <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+                <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+                <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+                <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+                <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+              </svg>
+              <span>Adicionar ao Chrome</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: MODO TURBO / PODER ILIMITADO (Text Left with Colored Highlight, Right Mockup) ================= -->
+  <section id="turbo" class="py-16 md:py-24 border-t border-slate-100 bg-slate-50/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Content -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-rose-50 text-rose-700 text-xs font-bold tracking-wide uppercase">
+            Recursos Avançados
+          </div>
+          <!-- Title with Red/Gradient Accent Highlight just like the reference -->
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Premium para <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500">poder ilimitado</span>
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Para quem precisa de produtividade profissional: downloads simultâneos em massa de playlists ou cursos inteiros, velocidade turbo com até 16 conexões paralelas e conversão sob demanda.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs">
+              <div class="text-rose-600 font-bold text-sm mb-1 flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Multi-threads Turbo
+              </div>
+              <div class="text-xs text-slate-500">Acelere sua taxa de transferência ao limite máximo da sua conexão.</div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs">
+              <div class="text-orange-600 font-bold text-sm mb-1 flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                Download em Lote
+              </div>
+              <div class="text-xs text-slate-500">Baixe múltiplos vídeos ou capítulos com um único comando.</div>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center gap-4">
+            <button onclick="openInstallModal()" class="border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all">
+              Ver os Planos
+            </button>
+            <span class="text-xs text-slate-500 font-medium">Plano básico sempre 100% gratuito</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Turbo Engine Mockup -->
+        <div class="lg:col-span-6">
+          <div class="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-800 relative overflow-hidden">
+            <!-- Background accent lines -->
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-orange-500/10 rounded-full blur-2xl"></div>
+
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+              <div class="flex items-center gap-2.5">
+                <span class="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></span>
+                <span class="font-bold text-sm tracking-wide text-slate-100">Painel Phoenix Turbo</span>
+              </div>
+              <span class="text-xs font-mono bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2.5 py-0.5 rounded-full font-bold">16 Threads</span>
+            </div>
+
+            <!-- Real-time Transfer Speed Meter -->
+            <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800/80 mb-4">
+              <div class="flex items-center justify-between mb-2 text-xs">
+                <span class="text-slate-400">Velocidade Atual de Download</span>
+                <span class="font-mono text-emerald-400 font-bold text-sm">48.6 MB/s</span>
+              </div>
+              <!-- Simulated Live Graph Bars -->
+              <div class="h-10 flex items-end gap-1.5 pt-2">
+                <div class="flex-1 bg-cyan-500/30 rounded-t h-[40%]"></div>
+                <div class="flex-1 bg-cyan-500/40 rounded-t h-[65%]"></div>
+                <div class="flex-1 bg-cyan-500/50 rounded-t h-[55%]"></div>
+                <div class="flex-1 bg-cyan-500/60 rounded-t h-[80%]"></div>
+                <div class="flex-1 bg-cyan-500/70 rounded-t h-[70%]"></div>
+                <div class="flex-1 bg-sky-400/80 rounded-t h-[90%]"></div>
+                <div class="flex-1 bg-sky-400 rounded-t h-[85%]"></div>
+                <div class="flex-1 bg-cyan-400 rounded-t h-[98%] shadow-sm shadow-cyan-400/50"></div>
+              </div>
+            </div>
+
+            <!-- Active Batch Tasks Queue -->
+            <div class="space-y-2.5 text-xs font-mono">
+              <div class="bg-slate-800/60 rounded-lg p-2.5 flex items-center justify-between border border-slate-700/60">
+                <div class="truncate max-w-[210px] text-slate-200">Aula-01_Introducao_4K.mp4</div>
+                <span class="text-emerald-400 font-semibold">100% Concluído</span>
+              </div>
+              <div class="bg-slate-800/60 rounded-lg p-2.5 border border-slate-700/60">
+                <div class="flex items-center justify-between mb-1.5 text-slate-200">
+                  <div class="truncate max-w-[210px]">Aula-02_Conceitos_Avancados.mp4</div>
+                  <span class="text-cyan-300">74%</span>
+                </div>
+                <div class="w-full bg-slate-700 rounded-full h-1 overflow-hidden">
+                  <div class="bg-cyan-400 h-1 w-[74%]"></div>
+                </div>
+              </div>
+              <div class="bg-slate-800/40 rounded-lg p-2.5 flex items-center justify-between border border-slate-800 text-slate-400">
+                <div class="truncate max-w-[210px]">Aula-03_Pratica_Completa.mp4</div>
+                <span>Na fila...</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUPPORTED BROWSERS SECTION ================= -->
+  <section class="py-12 border-t border-slate-100 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-6">Disponível para os principais navegadores</p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-slate-600">
+        
+        <!-- Google Chrome -->
+        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+            <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+            <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+            <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+            <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+            <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+          </svg>
+          <span class="text-sm font-semibold">Chrome</span>
+        </div>
+
+        <!-- Mozilla Firefox -->
+        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79.09.28.2.55.33.81 1.25 2.5 3.75 4.25 6.66 4.41-.66 1.4-1.2 2.8-1.2 4.5zm5.9-4.24c-.75 1.55-1.92 2.83-3.37 3.68.22-1.39.73-2.67 1.48-3.8.69-1.04 1.52-1.98 2.47-2.79-.17 1.05-.37 2.03-.58 2.91z"/>
+          </svg>
+          <span class="text-sm font-semibold">Firefox</span>
+        </div>
+
+        <!-- Microsoft Edge -->
+        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-sky-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16z"/>
+          </svg>
+          <span class="text-sm font-semibold">Microsoft Edge</span>
+        </div>
+
+        <!-- Brave Browser -->
+        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
+          </svg>
+          <span class="text-sm font-semibold">Brave</span>
+        </div>
+
+        <!-- Opera -->
+        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
+          <svg class="w-5 h-5 flex-shrink-0 text-rose-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+          </svg>
+          <span class="text-sm font-semibold">Opera</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ SECTION (Perguntas Frequentes Accordion) ================= -->
+  <section id="faq" class="py-16 md:py-24 border-t border-slate-100 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          Perguntas frequentes
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Tudo o que você precisa saber sobre o Phoenix Video Downloader.
+        </p>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-3" id="faqAccordion">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
+          <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
+            <span>Como o Phoenix Video Downloader detecta vídeos nos sites?</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            O Phoenix Video Downloader monitora as requisições de mídia abertas pelo reprodutor da página enquanto você navega. Quando um segmento de vídeo, manifesto HLS (.m3u8), fluxo DASH ou arquivo MP4/WebM começa a ser transmitido, o ícone da extensão acende indicando que o arquivo está pronto para ser salvo.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
+          <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
+            <span>O download de vídeos é realmente gratuito?</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Sim! A versão padrão é totalmente gratuita para downloads individuais diários, sem marca d’água e sem anúncios irritantes. Oferecemos também o plano opcional Phoenix Turbo para usuários avançados que precisam de downloads simultâneos em lote e velocidade ultra-acelerada.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
+          <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
+            <span>Quais formatos e resoluções são compatíveis?</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Suportamos fluxos HLS (m3u8), DASH (mpd), MP4 padrão, WebM, FLV e extração de faixas de áudio em MP3/AAC. Em termos de resolução, você pode baixar de 360p até 1080p Full HD, 2K e 4K Ultra HD (dependendo da qualidade disponibilizada pela plataforma de origem).
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
+          <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
+            <span>Meus dados e histórico de vídeos estão seguros?</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Absolutamente. O Phoenix Video Downloader foi desenvolvido com base no princípio de privacidade local. Todo o processamento de captura e concatenação de fragmentos ocorre na memória do seu navegador. Nenhum link ou arquivo de vídeo que você baixa é enviado para servidores externos.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
+          <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
+            <span>Por que alguns vídeos precisam de mesclagem de áudio e vídeo?</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Plataformas modernas de streaming (como transmissões adaptativas) frequentemente transmitem o vídeo e o áudio em fluxos separados para economizar largura de banda. O Phoenix Video Downloader baixa os dois fluxos simultaneamente e os une (muxing) de forma transparente em um único arquivo de vídeo pronto para reproduzir no seu player preferido.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
+          <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
+            <span>Como faço para instalar no Chrome ou no Edge?</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Basta clicar em qualquer botão "Adicionar ao Chrome" nesta página. Você será direcionado para a página oficial da extensão no Chrome Web Store. Clique em "Usar no Chrome" (ou "Obter no Edge") e confirme. A instalação leva menos de 5 segundos e não requer reinicialização.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Support CTA below FAQ (Like reference) -->
+      <div class="mt-10 text-center">
+        <p class="text-sm text-slate-700 font-semibold mb-1.5">Ainda tem alguma dúvida ou precisa de ajuda técnica?</p>
+        <p class="text-xs text-slate-500 mb-4">
+          Nossa equipe responde rapidamente pelo e-mail:
+          <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-sky-600 hover:text-sky-700 font-bold underline">extensao@phoenixautomacoes.com.br</a>
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button onclick="openSupportModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-300 text-slate-700 hover:text-slate-900 hover:border-slate-400 font-semibold text-sm transition-all shadow-xs">
+            <svg class="w-4 h-4 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            <span>Fale com o suporte</span>
+          </button>
+          <a href="mailto:extensao@phoenixautomacoes.com.br?subject=Duvida%20-%20Phoenix%20Video%20Downloader" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-xs">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Enviar E-mail Direto</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA BOX (High-Converting Center Card) ================= -->
+  <section class="py-16 bg-slate-50/70 border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-12 text-center shadow-lg shadow-slate-200/50 relative overflow-hidden">
+        
+        <!-- Top Logo Icon -->
+        <div class="mx-auto mb-6 flex items-center justify-center">
+          <img src="logo-fenix2.png" alt="Phoenix Video Downloader" class="w-24 h-24 object-contain drop-shadow-md transform hover:scale-105 transition-transform">
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          O baixador de vídeos mais confiável para o seu navegador
+        </h2>
+        <p class="text-sm sm:text-base text-slate-500 max-w-xl mx-auto mb-8 leading-relaxed">
+          Instale em segundos no Chrome e experimente a forma mais rápida de capturar suas mídias favoritas.
+        </p>
+
+        <div class="flex justify-center">
+          <button onclick="openInstallModal()" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-3.5 rounded-full text-base font-bold shadow-lg shadow-slate-900/15 hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+            <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
+              <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
+              <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
+              <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
+              <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
+              <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+          </svg>
+          <span>Baixar Phoenix Video Downloader v10.5.49.7</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER (Dark Background like reference) ================= -->
+<footer class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-900 text-xs sm:text-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-900">
+      
+      <!-- Brand Description (Col 1-4) -->
+      <div class="md:col-span-4 space-y-4">
+        <div class="flex items-center gap-3">
+          <img src="logo-fenix2.png" alt="Phoenix Video Downloader" class="w-9 h-9 object-contain">
+          <span class="font-bold text-white text-base">Phoenix Video Downloader</span>
+        </div>
+        <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+          A ferramenta mais avançada e transparente para detecção e captura de transmissões de áudio e vídeo na web moderna.
+        </p>
+        <p class="text-[11px] text-slate-400">
+          Versão estável atual: <span class="text-cyan-400 font-mono font-semibold">v10.5.49.7</span>
+        </p>
+      </div>
+
+      <!-- Links Column 1: Produto -->
+      <div class="md:col-span-3 space-y-3">
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Produto</p>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#recursos" class="hover:text-white transition-colors">Detecção Automática</a></li>
+          <li><a href="#desempenho" class="hover:text-white transition-colors">Formatos &amp; Resoluções</a></li>
+          <li><a href="/premium" class="hover:text-white transition-colors">Modo Turbo / Premium</a></li>
+          <li><a href="/changelog" class="hover:text-white transition-colors">Notas de Versão (v10.5.49.7)</a></li>
+          <li><a href="#privacidade" class="hover:text-white transition-colors">Segurança &amp; Privacidade</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 2: Suporte & Rotas -->
+      <div class="md:col-span-2 space-y-3">
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Suporte &amp; Ajuda</p>
+        <ul class="space-y-2 text-xs">
+          <li><a href="/ajuda" class="hover:text-white transition-colors">Central de Ajuda</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">Perguntas Frequentes</a></li>
+          <li><a href="/issue" class="hover:text-white transition-colors">Relatar Problema / Issue</a></li>
+          <li><a href="/welcome" class="hover:text-white transition-colors">Página de Boas-Vindas</a></li>
+          <li><a href="/goodbye" class="hover:text-white transition-colors">Desinstalação / Feedback</a></li>
+          <li><a href="mailto:extensao@phoenixautomacoes.com.br" class="text-cyan-400 hover:underline font-mono text-[11px] block pt-1">extensao@phoenixautomacoes.com.br</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 3: Download -->
+      <div class="md:col-span-3 space-y-3">
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Download</p>
+        <ul class="space-y-2 text-xs">
+          <li>
+            <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Baixar v10.5.49.7 (Chrome)</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
+              <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+              <span>Firefox Add-ons</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span>Microsoft Edge Add-ons</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Credits & Legal -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div>
+        &copy; 2026 Phoenix Video Downloader • <a href="https://extensao.phoenixautomacoes.com.br/" class="text-slate-400 hover:text-white transition-colors font-medium">extensao.phoenixautomacoes.com.br</a>. Todos os direitos reservados.
+      </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-slate-400 transition-colors">Termos de Uso</a>
+          <a href="#" class="hover:text-slate-400 transition-colors">Política de Privacidade</a>
+          <a href="#" class="hover:text-slate-400 transition-colors">Cookies</a>
+          <span class="text-slate-700">|</span>
+          <span class="text-slate-400 flex items-center gap-1">
+            <span>🇧🇷 Português (Brasil)</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MODAL DE INSTALAÇÃO SIMULADA ================= -->
+  <div id="installModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 transform transition-all">
+      <div class="flex items-start justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <img src="logo-fenix2.png" alt="Phoenix Video Downloader" class="w-14 h-14 object-contain drop-shadow-sm">
+          <div>
+            <h4 class="font-bold text-slate-900">Phoenix Video Downloader <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800 ml-1">v10.5.49.7</span></h4>
+            <p class="text-xs text-slate-500">Extensão para Google Chrome &amp; Chromium</p>
+          </div>
+        </div>
+        <button onclick="closeInstallModal()" class="text-slate-400 hover:text-slate-600 p-1">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 text-xs text-slate-600 space-y-2 mb-5">
+        <div class="flex items-center gap-2 text-emerald-700 font-semibold">
+          <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span>Extensão verificada pela Chrome Web Store</span>
+        </div>
+        <p>Ao instalar, o ícone da Phoenix será fixado na sua barra de extensões para detectar vídeos automaticamente.</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="confirmInstall()" id="confirmInstallBtn" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
+          <span>Baixar Phoenix Video Downloader v10.5.49.7</span>
+        </button>
+        <button onclick="closeInstallModal()" class="border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold py-2.5 px-4 rounded-xl text-sm transition-colors">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL DE SUPORTE ================= -->
+  <div id="supportModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between mb-4">
+        <h4 class="font-bold text-slate-900 text-lg">Central de Suporte Phoenix</h4>
+        <button onclick="closeSupportModal()" class="text-slate-400 hover:text-slate-600 p-1">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Highlight Direct Email Box -->
+      <div class="bg-sky-50 border border-sky-200 rounded-xl p-3.5 mb-4 flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-sky-600 text-white flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold text-sky-800 uppercase tracking-wider">E-mail Direto de Atendimento</p>
+          <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-xs font-bold text-sky-950 hover:text-sky-700 underline break-all">extensao@phoenixautomacoes.com.br</a>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+        Preencha o formulário abaixo ou clique no e-mail acima para falar com nosso suporte técnico:
+      </p>
+      <form onsubmit="handleSupportSubmit(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Seu E-mail</label>
+          <input id="supportUserEmail" type="email" required placeholder="seuemail@exemplo.com" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Dúvida ou URL do site com problema</label>
+          <textarea id="supportUserMsg" required rows="3" placeholder="Descreva sua dúvida ou informe o site..." class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+          <span>Enviar Mensagem para o Suporte</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-800 flex items-center gap-3 text-xs pointer-events-none">
+    <div id="toastIcon" class="w-2 h-2 rounded-full bg-emerald-400"></div>
+    <span id="toastMsg">Mensagem</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

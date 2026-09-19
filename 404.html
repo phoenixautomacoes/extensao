@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando... — Phoenix Video Downloader</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // GitHub Pages SPA route redirector
+    const path = window.location.pathname;
+    if (path.includes('/welcome')) {
+      window.location.replace('/welcome.html');
+    } else if (path.includes('/goodbye')) {
+      window.location.replace('/goodbye.html');
+    } else if (path.includes('/premium')) {
+      window.location.replace('/#turbo');
+    } else if (path.includes('/changelog')) {
+      window.location.replace('/#recursos');
+    } else if (path.includes('/issue') || path.includes('/ajuda') || path.includes('/help')) {
+      window.location.replace('/#faq');
+    } else {
+      window.location.replace('/');
+    }
+  </script>
+</head>
+<body style="font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #fafafa; color: #334155; text-align: center;">
+  <div>
+    <p style="font-size: 1.1rem; font-weight: 600;">Redirecionando para o Phoenix Video Downloader...</p>
+    <p style="font-size: 0.85rem; color: #64748b;">Se não for redirecionado automaticamente, <a href="/" style="color: #0284c7;">clique aqui</a>.</p>
+  </div>
+</body>
+</html>
