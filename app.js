@@ -209,66 +209,10 @@ function confirmInstall() {
   }
 }
 
-function openSupportModal() {
-  const modal = document.getElementById('supportModal');
-  if (modal) {
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeSupportModal() {
-  const modal = document.getElementById('supportModal');
-  if (modal) {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-}
-
-async function handleSupportSubmit(e) {
-  e.preventDefault();
-  const emailInput = document.getElementById('supportUserEmail');
-  const msgInput = document.getElementById('supportUserMsg');
-  const userEmail = emailInput ? emailInput.value : '';
-  const userMsg = msgInput ? msgInput.value : '';
-  const submitBtn = e.target.querySelector('button[type="submit"]');
-
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Enviando...';
-  }
-
-  const payload = {
-    "E-mail": userEmail,
-    "Mensagem": userMsg,
-    "_subject": `[Suporte Rápido] ${userEmail}`,
-    "_replyto": userEmail,
-    "_template": "table",
-    "_captcha": "false"
-  };
-
-  try {
-    await fetch('https://formsubmit.co/ajax/extensao@phoenixautomacoes.com.br', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {
-    console.error('Erro ao enviar suporte:', err);
-  } finally {
-    closeSupportModal();
-    showToast('Mensagem enviada com sucesso para extensao@phoenixautomacoes.com.br!', 'success');
-  }
-}
-
-// Close modals on Escape or Backdrop click
+// Close modal on Escape or Backdrop click
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeInstallModal();
-    closeSupportModal();
   }
 });
 
@@ -276,13 +220,6 @@ const installModal = document.getElementById('installModal');
 if (installModal) {
   installModal.addEventListener('click', (e) => {
     if (e.target === installModal) closeInstallModal();
-  });
-}
-
-const supportModal = document.getElementById('supportModal');
-if (supportModal) {
-  supportModal.addEventListener('click', (e) => {
-    if (e.target === supportModal) closeSupportModal();
   });
 }
 
@@ -315,75 +252,4 @@ function showToast(message, type = 'info') {
   }, 4000);
 }
 
-async function handleLandingContactSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contactForm');
-  const successCard = document.getElementById('landingFormSuccess');
-  const submitBtn = document.getElementById('landingSubmitBtn');
-
-  const name = document.getElementById('landingName') ? document.getElementById('landingName').value : '';
-  const whatsapp = document.getElementById('landingWhatsapp') ? document.getElementById('landingWhatsapp').value : '';
-  const email = document.getElementById('landingEmail') ? document.getElementById('landingEmail').value : '';
-  const reason = document.getElementById('landingReason') ? document.getElementById('landingReason').value : '';
-  const url = document.getElementById('landingUrl') ? document.getElementById('landingUrl').value : '';
-  const message = document.getElementById('landingMessage') ? document.getElementById('landingMessage').value : '';
-
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <svg class="w-4 h-4 animate-spin text-cyan-400 inline-block mr-2" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>
-      <span>Enviando solicitação...</span>
-    `;
-  }
-
-  const payload = {
-    "Nome Completo": name || 'Não informado',
-    "WhatsApp": whatsapp || 'Não informado',
-    "E-mail de Contato": email,
-    "Motivo": reason || 'Dúvida Geral',
-    "URL / Site do Vídeo": url || 'Nenhum',
-    "Mensagem": message,
-    "_subject": `[Suporte Extensão] ${reason || 'Contato'} - ${name || email}`,
-    "_replyto": email,
-    "_template": "table",
-    "_captcha": "false"
-  };
-
-  try {
-    await fetch('https://formsubmit.co/ajax/extensao@phoenixautomacoes.com.br', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {
-    console.error('Erro ao enviar contato:', err);
-  } finally {
-    if (form) form.classList.add('hidden');
-    if (successCard) successCard.classList.remove('hidden');
-    showToast('Solicitação enviada com sucesso para nossa equipe!', 'success');
-  }
-}
-
-function resetLandingContactForm() {
-  const form = document.getElementById('contactForm');
-  const successCard = document.getElementById('landingFormSuccess');
-  const submitBtn = document.getElementById('landingSubmitBtn');
-
-  if (form && successCard && submitBtn) {
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = `
-      <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-      <span>Enviar Solicitação de Suporte</span>
-    `;
-    form.classList.remove('hidden');
-    successCard.classList.add('hidden');
-  }
-}
 

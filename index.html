@@ -151,16 +151,16 @@
       <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8 text-xs text-slate-500 font-medium">
         <span class="text-slate-400">Compatível com:</span>
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200/80 text-slate-700 font-semibold">
-          <img src="chrome.png" alt="Google Chrome" class="w-4 h-4 object-contain">
-          <span>Chrome</span>
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200/80 text-slate-700 font-semibold">
           <img src="opera.png" alt="Opera" class="w-4 h-4 object-contain">
           <span>Opera</span>
         </span>
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200/80 text-slate-700 font-semibold">
           <img src="firefox.png" alt="Firefox" class="w-4 h-4 object-contain">
           <span>Firefox</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200/80 text-slate-700 font-semibold">
+          <img src="chrome.png" alt="Google Chrome" class="w-4 h-4 object-contain">
+          <span>Chrome</span>
         </span>
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200/80 text-slate-700 font-semibold">
           <img src="edge.png" alt="Edge" class="w-4 h-4 object-contain">
@@ -740,56 +740,35 @@
     </div>
   </section>
 
-  <!-- ================= SUPPORTED BROWSERS SECTION ================= -->
-  <section class="py-12 border-t border-slate-100 bg-white">
+  <!-- ================= SECTION: BROWSER SUPPORT ================= -->
+  <section class="py-12 bg-slate-50 border-t border-b border-slate-200/60">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-6">Disponível para os principais navegadores</p>
       
-      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-slate-600">
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
         
-        <!-- Google Chrome -->
-        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
-          <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#fff" fill-opacity="0.2"/>
-            <path d="M12 2C7.8 2 4.2 4.6 2.7 8.3L6.8 15.4C6.3 14.4 6 13.2 6 12C6 8.7 8.7 6 12 6H21.4C19.3 3.5 15.9 2 12 2Z" fill="#EA4335"/>
-            <path d="M12 22C16.2 22 19.8 19.4 21.3 15.7L17.2 8.6C17.7 9.6 18 10.8 18 12C18 15.3 15.3 18 12 18H4.6C6.7 20.5 10.1 22 12 22Z" fill="#34A853"/>
-            <path d="M2.7 8.3C1.6 10.3 1 12.6 1 15C1 19.2 3.6 22.8 7.3 24.3L11.4 17.2C10.4 17.7 9.2 18 8 18C4.7 18 2 15.3 2 12C2 10.7 2.4 9.4 3.1 8.3L2.7 8.3Z" fill="#FBBC05"/>
-            <circle cx="12" cy="12" r="4.2" fill="#4285F4"/>
-            <circle cx="12" cy="12" r="3.2" fill="#fff"/>
-          </svg>
-          <span class="text-sm font-semibold">Chrome</span>
+        <!-- Opera -->
+        <div class="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+          <img src="opera.png" alt="Opera" class="w-7 h-7 object-contain">
+          <span class="text-sm font-bold text-slate-800">Opera</span>
         </div>
 
         <!-- Mozilla Firefox -->
-        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
-          <svg class="w-5 h-5 flex-shrink-0 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79.09.28.2.55.33.81 1.25 2.5 3.75 4.25 6.66 4.41-.66 1.4-1.2 2.8-1.2 4.5zm5.9-4.24c-.75 1.55-1.92 2.83-3.37 3.68.22-1.39.73-2.67 1.48-3.8.69-1.04 1.52-1.98 2.47-2.79-.17 1.05-.37 2.03-.58 2.91z"/>
-          </svg>
-          <span class="text-sm font-semibold">Firefox</span>
+        <div class="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+          <img src="firefox.png" alt="Mozilla Firefox" class="w-7 h-7 object-contain">
+          <span class="text-sm font-bold text-slate-800">Firefox</span>
+        </div>
+
+        <!-- Google Chrome -->
+        <div class="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+          <img src="chrome.png" alt="Google Chrome" class="w-7 h-7 object-contain">
+          <span class="text-sm font-bold text-slate-800">Chrome</span>
         </div>
 
         <!-- Microsoft Edge -->
-        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
-          <svg class="w-5 h-5 flex-shrink-0 text-sky-600" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16z"/>
-          </svg>
-          <span class="text-sm font-semibold">Microsoft Edge</span>
-        </div>
-
-        <!-- Brave Browser -->
-        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
-          <svg class="w-5 h-5 flex-shrink-0 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
-          </svg>
-          <span class="text-sm font-semibold">Brave</span>
-        </div>
-
-        <!-- Opera -->
-        <div class="flex items-center gap-2.5 hover:text-slate-900 transition-colors">
-          <svg class="w-5 h-5 flex-shrink-0 text-rose-500" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
-          </svg>
-          <span class="text-sm font-semibold">Opera</span>
+        <div class="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+          <img src="edge.png" alt="Microsoft Edge" class="w-7 h-7 object-contain">
+          <span class="text-sm font-bold text-slate-800">Edge</span>
         </div>
 
       </div>
@@ -880,13 +859,13 @@
         <!-- FAQ 6 -->
         <div class="faq-item border border-slate-200 rounded-xl overflow-hidden transition-colors">
           <button class="faq-btn w-full px-5 py-4 text-left font-semibold text-slate-800 hover:text-slate-900 flex items-center justify-between gap-4 focus:outline-none focus-visible:bg-slate-50">
-            <span>Como faço para instalar no Chrome ou no Edge?</span>
+            <span>Como faço para instalar no Opera, Firefox, Chrome ou Edge?</span>
             <svg class="faq-arrow w-5 h-5 text-slate-600 transition-transform duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
           <div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            Basta clicar em qualquer botão "Adicionar ao Chrome" nesta página. Você será direcionado para a página oficial da extensão no Chrome Web Store. Clique em "Usar no Chrome" (ou "Obter no Edge") e confirme. A instalação leva menos de 5 segundos e não requer reinicialização.
+            Basta clicar no botão "Baixar Phoenix Video Downloader" nesta página. A extensão é compatível diretamente com Opera, Mozilla Firefox, Google Chrome e Microsoft Edge. A instalação leva menos de 5 segundos e não requer reinicialização do navegador.
           </div>
         </div>
 
@@ -895,128 +874,7 @@
     </div>
   </section>
 
-  <!-- ================= SECTION: FORMULÁRIO DE SUPORTE E CONTATO ================= -->
-  <section id="suporte" class="py-16 md:py-24 bg-slate-50/80 border-t border-slate-200/60 relative">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6">
-      
-      <!-- Section Title -->
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-xs font-bold uppercase tracking-wider mb-3">
-          <svg class="w-3.5 h-3.5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-          Atendimento &amp; Suporte Técnico
-        </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-          Envie sua mensagem para o suporte
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 max-w-lg mx-auto leading-relaxed">
-          Preencha o formulário abaixo para relatar um erro, sugerir um site ou tirar dúvidas. Nossa equipe técnica responde em até 24h úteis.
-        </p>
-      </div>
 
-      <!-- Form Card (Inspired directly by user reference) -->
-      <div class="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-200/50 relative overflow-hidden">
-        
-        <form id="contactForm" onsubmit="handleLandingContactSubmit(event)" class="space-y-5">
-
-          <!-- Field 1: Nome completo -->
-          <div>
-            <label for="landingName" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
-              Seu nome completo <span class="text-rose-500">*</span>
-            </label>
-            <input type="text" id="landingName" required placeholder="Ex: Maria Silva" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
-          </div>
-
-          <!-- Field 2: WhatsApp para retorno -->
-          <div>
-            <label for="landingWhatsapp" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
-              WhatsApp para retorno <span class="text-slate-400 font-normal text-xs">(opcional)</span>
-            </label>
-            <input type="tel" id="landingWhatsapp" placeholder="(51) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
-          </div>
-
-          <!-- Field 3: E-mail -->
-          <div>
-            <label for="landingEmail" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
-              E-mail <span class="text-rose-500">*</span>
-            </label>
-            <input type="email" id="landingEmail" required placeholder="seuemail@exemplo.com" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
-          </div>
-
-          <!-- Field 4: Motivo do contato (Select) -->
-          <div>
-            <label for="landingReason" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
-              Motivo do contato <span class="text-rose-500">*</span>
-            </label>
-            <select id="landingReason" required class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
-              <option value="">Selecione um motivo...</option>
-              <option value="Download falhou em site específico">O download falhou em um site específico</option>
-              <option value="Vídeo não detectado pela Fênix">Vídeo não foi detectado na página</option>
-              <option value="Dúvida sobre Modo Turbo / Licença">Dúvida sobre o Modo Turbo / Licença</option>
-              <option value="Sugestão de novo site ou recurso">Sugestão de compatibilidade ou recurso</option>
-              <option value="Outro assunto">Outro assunto</option>
-            </select>
-          </div>
-
-          <!-- Field 5: URL do site com problema -->
-          <div>
-            <label for="landingUrl" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
-              URL do site com problema <span class="text-slate-400 font-normal text-xs">(se aplicável)</span>
-            </label>
-            <input type="text" id="landingUrl" placeholder="Ex: https://vimeo.com/... ou https://site.com/video" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
-          </div>
-
-          <!-- Field 6: Mensagem detalhada -->
-          <div>
-            <label for="landingMessage" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
-              Detalhes da solicitação <span class="text-rose-500">*</span>
-            </label>
-            <textarea id="landingMessage" rows="3" required placeholder="Descreva sua solicitação com o máximo de detalhes..." class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400 resize-y"></textarea>
-          </div>
-
-          <!-- Field 7: Checkbox LGPD -->
-          <div class="flex items-start gap-3 pt-1">
-            <input type="checkbox" id="landingLgpd" required checked class="mt-1 rounded border-slate-300 text-cyan-600 focus:ring-cyan-500 cursor-pointer">
-            <label for="landingLgpd" class="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
-              Concordo que o <strong>Phoenix Video Downloader</strong> utilize meus dados de contato exclusivamente para dar retorno à minha solicitação de atendimento, em conformidade com a LGPD.
-            </label>
-          </div>
-
-          <!-- Submit Button (clean, professional, NO whatsapp) -->
-          <div class="pt-2">
-            <button type="submit" id="landingSubmitBtn" class="w-full py-4 px-6 rounded-2xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-slate-900/10 hover:shadow-xl">
-              <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-              <span>Enviar Solicitação de Suporte</span>
-            </button>
-          </div>
-
-          <p class="text-center text-[11px] text-slate-500 pt-1">
-            Atendimento oficial direto por: <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-sky-600 hover:underline font-semibold">extensao@phoenixautomacoes.com.br</a>
-          </p>
-
-        </form>
-
-        <!-- Form Success State (hidden initially) -->
-        <div id="landingFormSuccess" class="hidden text-center py-10 space-y-4">
-          <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2">
-            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-extrabold text-slate-900">Solicitação Enviada com Sucesso!</h3>
-          <p class="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-            Recebemos seus dados e nossa equipe de suporte entrará em contato através do e-mail informado com a solução para o seu caso.
-          </p>
-          <div class="pt-3">
-            <button onclick="resetLandingContactForm()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold transition-colors">
-              <span>Enviar outra mensagem</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
 
   <!-- ================= FINAL CTA BOX (High-Converting Center Card) ================= -->
   <section class="py-16 bg-slate-50/70 border-t border-slate-100">
@@ -1045,16 +903,16 @@
         <div class="flex flex-wrap items-center justify-center gap-3 mt-6 text-xs text-slate-500 font-medium">
           <span class="text-slate-400">Compatível com:</span>
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">
-            <img src="chrome.png" alt="Chrome" class="w-4 h-4 object-contain">
-            <span>Chrome</span>
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">
             <img src="opera.png" alt="Opera" class="w-4 h-4 object-contain">
             <span>Opera</span>
           </span>
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">
             <img src="firefox.png" alt="Firefox" class="w-4 h-4 object-contain">
             <span>Firefox</span>
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">
+            <img src="chrome.png" alt="Chrome" class="w-4 h-4 object-contain">
+            <span>Chrome</span>
           </span>
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">
             <img src="edge.png" alt="Edge" class="w-4 h-4 object-contain">
@@ -1097,7 +955,7 @@
       </div>
 
       <!-- Links Column 2: Suporte & Rotas -->
-      <div class="md:col-span-2 space-y-3">
+      <div id="suporte" class="md:col-span-2 space-y-3 scroll-mt-10">
         <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Suporte &amp; Ajuda</p>
         <ul class="space-y-2 text-xs">
           <li><a href="/ajuda" class="hover:text-white transition-colors">Central de Ajuda</a></li>
@@ -1105,7 +963,10 @@
           <li><a href="/issue" class="hover:text-white transition-colors">Relatar Problema / Issue</a></li>
           <li><a href="/welcome" class="hover:text-white transition-colors">Página de Boas-Vindas</a></li>
           <li><a href="/goodbye" class="hover:text-white transition-colors">Desinstalação / Feedback</a></li>
-          <li><a href="mailto:extensao@phoenixautomacoes.com.br" class="text-cyan-400 hover:underline font-mono text-[11px] block pt-1">extensao@phoenixautomacoes.com.br</a></li>
+          <li class="pt-2 border-t border-slate-800">
+            <span class="text-slate-400 block text-[11px] font-medium">E-mail de Contato:</span>
+            <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-cyan-400 hover:text-cyan-300 hover:underline font-mono text-xs font-bold block pt-0.5 break-all">extensao@phoenixautomacoes.com.br</a>
+          </li>
         </ul>
       </div>
 
@@ -1113,12 +974,6 @@
       <div class="md:col-span-3 space-y-3">
         <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Download</p>
         <ul class="space-y-2.5 text-xs">
-          <li>
-            <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
-              <img src="chrome.png" alt="Google Chrome" class="w-4 h-4 object-contain">
-              <span>Google Chrome</span>
-            </a>
-          </li>
           <li>
             <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
               <img src="opera.png" alt="Opera" class="w-4 h-4 object-contain">
@@ -1129,6 +984,12 @@
             <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
               <img src="firefox.png" alt="Mozilla Firefox" class="w-4 h-4 object-contain">
               <span>Mozilla Firefox</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="openInstallModal(); return false;" class="flex items-center gap-2 hover:text-white transition-colors">
+              <img src="chrome.png" alt="Google Chrome" class="w-4 h-4 object-contain">
+              <span>Google Chrome</span>
             </a>
           </li>
           <li>
@@ -1171,9 +1032,9 @@
             <h4 class="font-bold text-slate-900">Phoenix Video Downloader</h4>
             <div class="flex items-center gap-2 mt-1">
               <span class="text-[11px] text-slate-500">Compatível com:</span>
-              <img src="chrome.png" alt="Chrome" class="w-3.5 h-3.5 object-contain" title="Google Chrome">
               <img src="opera.png" alt="Opera" class="w-3.5 h-3.5 object-contain" title="Opera">
-              <img src="firefox.png" alt="Firefox" class="w-3.5 h-3.5 object-contain" title="Firefox">
+              <img src="firefox.png" alt="Firefox" class="w-3.5 h-3.5 object-contain" title="Mozilla Firefox">
+              <img src="chrome.png" alt="Chrome" class="w-3.5 h-3.5 object-contain" title="Google Chrome">
               <img src="edge.png" alt="Edge" class="w-3.5 h-3.5 object-contain" title="Microsoft Edge">
             </div>
           </div>
@@ -1203,46 +1064,6 @@
     </div>
   </div>
 
-  <!-- ================= MODAL DE SUPORTE ================= -->
-  <div id="supportModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-      <div class="flex items-center justify-between mb-4">
-        <h4 class="font-bold text-slate-900 text-lg">Central de Suporte Phoenix</h4>
-        <button onclick="closeSupportModal()" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Highlight Direct Email Box -->
-      <div class="bg-sky-50 border border-sky-200 rounded-xl p-3.5 mb-4 flex items-center gap-3">
-        <div class="w-9 h-9 rounded-lg bg-sky-600 text-white flex items-center justify-center flex-shrink-0">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold text-sky-800 uppercase tracking-wider">E-mail Direto de Atendimento</p>
-          <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-xs font-bold text-sky-950 hover:text-sky-700 underline break-all">extensao@phoenixautomacoes.com.br</a>
-        </div>
-      </div>
-
-      <p class="text-xs text-slate-600 mb-4 leading-relaxed">
-        Preencha o formulário abaixo ou clique no e-mail acima para falar com nosso suporte técnico:
-      </p>
-      <form onsubmit="handleSupportSubmit(event)" class="space-y-3">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Seu E-mail</label>
-          <input id="supportUserEmail" type="email" required placeholder="seuemail@exemplo.com" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Dúvida ou URL do site com problema</label>
-          <textarea id="supportUserMsg" required rows="3" placeholder="Descreva sua dúvida ou informe o site..." class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
-          <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-          <span>Enviar Mensagem para o Suporte</span>
-        </button>
-      </form>
-    </div>
-  </div>
 
   <!-- Toast Notification Container -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-800 flex items-center gap-3 text-xs pointer-events-none">
