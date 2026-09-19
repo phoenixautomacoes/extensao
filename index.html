@@ -66,7 +66,7 @@
 
       <!-- Desktop Action CTA -->
       <div class="hidden md:flex items-center gap-3">
-        <a href="#faq" class="text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-2 transition-colors">
+        <a href="#suporte" class="text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-2 transition-colors">
           Suporte
         </a>
         <button onclick="openInstallModal()" class="btn-primary group flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm transition-all">
@@ -888,23 +888,127 @@
 
       </div>
 
-      <!-- Support CTA below FAQ (Like reference) -->
-      <div class="mt-10 text-center">
-        <p class="text-sm text-slate-700 font-semibold mb-1.5">Ainda tem alguma dúvida ou precisa de ajuda técnica?</p>
-        <p class="text-xs text-slate-500 mb-4">
-          Nossa equipe responde rapidamente pelo e-mail:
-          <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-sky-600 hover:text-sky-700 font-bold underline">extensao@phoenixautomacoes.com.br</a>
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <button onclick="openSupportModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-300 text-slate-700 hover:text-slate-900 hover:border-slate-400 font-semibold text-sm transition-all shadow-xs">
-            <svg class="w-4 h-4 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            <span>Fale com o suporte</span>
-          </button>
-          <a href="mailto:extensao@phoenixautomacoes.com.br?subject=Duvida%20-%20Phoenix%20Video%20Downloader" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-xs">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <span>Enviar E-mail Direto</span>
-          </a>
+    </div>
+  </section>
+
+  <!-- ================= SECTION: FORMULÁRIO DE SUPORTE E CONTATO ================= -->
+  <section id="suporte" class="py-16 md:py-24 bg-slate-50/80 border-t border-slate-200/60 relative">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-xs font-bold uppercase tracking-wider mb-3">
+          <svg class="w-3.5 h-3.5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          Atendimento &amp; Suporte Técnico
         </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+          Envie sua mensagem para o suporte
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 max-w-lg mx-auto leading-relaxed">
+          Preencha o formulário abaixo para relatar um erro, sugerir um site ou tirar dúvidas. Nossa equipe técnica responde em até 24h úteis.
+        </p>
+      </div>
+
+      <!-- Form Card (Inspired directly by user reference) -->
+      <div class="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-200/50 relative overflow-hidden">
+        
+        <form id="contactForm" onsubmit="handleLandingContactSubmit(event)" class="space-y-5">
+
+          <!-- Field 1: Nome completo -->
+          <div>
+            <label for="landingName" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+              Seu nome completo <span class="text-rose-500">*</span>
+            </label>
+            <input type="text" id="landingName" required placeholder="Ex: Maria Silva" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
+          </div>
+
+          <!-- Field 2: WhatsApp para retorno -->
+          <div>
+            <label for="landingWhatsapp" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+              WhatsApp para retorno <span class="text-slate-400 font-normal text-xs">(opcional)</span>
+            </label>
+            <input type="tel" id="landingWhatsapp" placeholder="(51) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
+          </div>
+
+          <!-- Field 3: E-mail -->
+          <div>
+            <label for="landingEmail" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+              E-mail <span class="text-rose-500">*</span>
+            </label>
+            <input type="email" id="landingEmail" required placeholder="seuemail@exemplo.com" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
+          </div>
+
+          <!-- Field 4: Motivo do contato (Select) -->
+          <div>
+            <label for="landingReason" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+              Motivo do contato <span class="text-rose-500">*</span>
+            </label>
+            <select id="landingReason" required class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
+              <option value="">Selecione um motivo...</option>
+              <option value="Download falhou em site específico">O download falhou em um site específico</option>
+              <option value="Vídeo não detectado pela Fênix">Vídeo não foi detectado na página</option>
+              <option value="Dúvida sobre Modo Turbo / Licença">Dúvida sobre o Modo Turbo / Licença</option>
+              <option value="Sugestão de novo site ou recurso">Sugestão de compatibilidade ou recurso</option>
+              <option value="Outro assunto">Outro assunto</option>
+            </select>
+          </div>
+
+          <!-- Field 5: URL do site com problema -->
+          <div>
+            <label for="landingUrl" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+              URL do site com problema <span class="text-slate-400 font-normal text-xs">(se aplicável)</span>
+            </label>
+            <input type="text" id="landingUrl" placeholder="Ex: https://vimeo.com/... ou https://site.com/video" class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400">
+          </div>
+
+          <!-- Field 6: Mensagem detalhada -->
+          <div>
+            <label for="landingMessage" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1.5">
+              Detalhes da solicitação <span class="text-rose-500">*</span>
+            </label>
+            <textarea id="landingMessage" rows="3" required placeholder="Descreva sua solicitação com o máximo de detalhes..." class="w-full px-4 py-3 rounded-xl border border-slate-300/80 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white hover:border-slate-400 resize-y"></textarea>
+          </div>
+
+          <!-- Field 7: Checkbox LGPD -->
+          <div class="flex items-start gap-3 pt-1">
+            <input type="checkbox" id="landingLgpd" required checked class="mt-1 rounded border-slate-300 text-cyan-600 focus:ring-cyan-500 cursor-pointer">
+            <label for="landingLgpd" class="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
+              Concordo que o <strong>Phoenix Video Downloader</strong> utilize meus dados de contato exclusivamente para dar retorno à minha solicitação de atendimento, em conformidade com a LGPD.
+            </label>
+          </div>
+
+          <!-- Submit Button (clean, professional, NO whatsapp) -->
+          <div class="pt-2">
+            <button type="submit" id="landingSubmitBtn" class="w-full py-4 px-6 rounded-2xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-slate-900/10 hover:shadow-xl">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              <span>Enviar Solicitação de Suporte</span>
+            </button>
+          </div>
+
+          <p class="text-center text-[11px] text-slate-500 pt-1">
+            Atendimento oficial direto por: <a href="mailto:extensao@phoenixautomacoes.com.br" class="text-sky-600 hover:underline font-semibold">extensao@phoenixautomacoes.com.br</a>
+          </p>
+
+        </form>
+
+        <!-- Form Success State (hidden initially) -->
+        <div id="landingFormSuccess" class="hidden text-center py-10 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-extrabold text-slate-900">Solicitação Enviada com Sucesso!</h3>
+          <p class="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+            Recebemos seus dados e nossa equipe de suporte entrará em contato através do e-mail informado com a solução para o seu caso.
+          </p>
+          <div class="pt-3">
+            <button onclick="resetLandingContactForm()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold transition-colors">
+              <span>Enviar outra mensagem</span>
+            </button>
+          </div>
+        </div>
+
       </div>
 
     </div>
