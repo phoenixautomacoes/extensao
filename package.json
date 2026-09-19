@@ -1,0 +1,21 @@
+{
+  "name": "phoenix-video-downloader",
+  "version": "10.5.49.7",
+  "description": "Portal e Landing Page Oficial do Phoenix Video Downloader",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Deploy pronto'"
+  },
+  "keywords": [
+    "phoenix",
+    "video-downloader",
+    "extensao",
+    "chrome",
+    "opera",
+    "firefox",
+    "edge"
+  ],
+  "author": "Phoenix Automações <extensao@phoenixautomacoes.com.br>",
+  "license": "MIT"
+}
