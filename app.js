@@ -225,18 +225,43 @@ function closeSupportModal() {
   }
 }
 
-function handleSupportSubmit(e) {
+async function handleSupportSubmit(e) {
   e.preventDefault();
   const emailInput = document.getElementById('supportUserEmail');
   const msgInput = document.getElementById('supportUserMsg');
   const userEmail = emailInput ? emailInput.value : '';
   const userMsg = msgInput ? msgInput.value : '';
+  const submitBtn = e.target.querySelector('button[type="submit"]');
 
-  const mailtoUrl = `mailto:extensao@phoenixautomacoes.com.br?subject=${encodeURIComponent('Suporte - Phoenix Video Downloader')}&body=${encodeURIComponent(`Remetente: ${userEmail}\n\nMensagem:\n${userMsg}`)}`;
-  window.location.href = mailtoUrl;
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Enviando...';
+  }
 
-  closeSupportModal();
-  showToast('Abrindo mensagem para extensao@phoenixautomacoes.com.br...', 'success');
+  const payload = {
+    "E-mail": userEmail,
+    "Mensagem": userMsg,
+    "_subject": `[Suporte Rápido] ${userEmail}`,
+    "_replyto": userEmail,
+    "_template": "table",
+    "_captcha": "false"
+  };
+
+  try {
+    await fetch('https://formsubmit.co/ajax/extensao@phoenixautomacoes.com.br', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.error('Erro ao enviar suporte:', err);
+  } finally {
+    closeSupportModal();
+    showToast('Mensagem enviada com sucesso para extensao@phoenixautomacoes.com.br!', 'success');
+  }
 }
 
 // Close modals on Escape or Backdrop click
@@ -290,8 +315,7 @@ function showToast(message, type = 'info') {
   }, 4000);
 }
 
-/* ================= LANDING CONTACT FORM HANDLER ================= */
-function handleLandingContactSubmit(e) {
+async function handleLandingContactSubmit(e) {
   e.preventDefault();
   const form = document.getElementById('contactForm');
   const successCard = document.getElementById('landingFormSuccess');
@@ -307,7 +331,7 @@ function handleLandingContactSubmit(e) {
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = `
-      <svg class="w-4 h-4 animate-spin text-cyan-400" fill="none" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 animate-spin text-cyan-400 inline-block mr-2" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
       </svg>
@@ -315,17 +339,35 @@ function handleLandingContactSubmit(e) {
     `;
   }
 
-  // Compose mailto as direct bridge to official support email
-  const mailtoUrl = `mailto:extensao@phoenixautomacoes.com.br?subject=${encodeURIComponent(`[Suporte Extensão] ${reason || 'Contato'} - ${name}`)}&body=${encodeURIComponent(
-    `Nome: ${name}\nWhatsApp: ${whatsapp}\nE-mail: ${email}\nMotivo: ${reason}\nURL com falha: ${url}\n\nMensagem:\n${message}`
-  )}`;
+  const payload = {
+    "Nome Completo": name || 'Não informado',
+    "WhatsApp": whatsapp || 'Não informado',
+    "E-mail de Contato": email,
+    "Motivo": reason || 'Dúvida Geral',
+    "URL / Site do Vídeo": url || 'Nenhum',
+    "Mensagem": message,
+    "_subject": `[Suporte Extensão] ${reason || 'Contato'} - ${name || email}`,
+    "_replyto": email,
+    "_template": "table",
+    "_captcha": "false"
+  };
 
-  setTimeout(() => {
+  try {
+    await fetch('https://formsubmit.co/ajax/extensao@phoenixautomacoes.com.br', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.error('Erro ao enviar contato:', err);
+  } finally {
     if (form) form.classList.add('hidden');
     if (successCard) successCard.classList.remove('hidden');
     showToast('Solicitação enviada com sucesso para nossa equipe!', 'success');
-    window.location.href = mailtoUrl;
-  }, 900);
+  }
 }
 
 function resetLandingContactForm() {

@@ -219,7 +219,7 @@
   </footer>
 
   <script>
-    function submitGoodbyeFeedback(e) {
+    async function submitGoodbyeFeedback(e) {
       e.preventDefault();
       const form = document.getElementById('feedbackForm');
       const thankYouCard = document.getElementById('thankYouCard');
@@ -232,17 +232,52 @@
       const feedbackEmail = document.getElementById('feedbackEmail').value;
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Enviando...</span>`;
+      submitBtn.innerHTML = `
+        <svg class="w-4 h-4 animate-spin text-cyan-400 inline-block mr-2" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Enviando relato...</span>
+      `;
 
-      // Trigger mailto link in background as fallback or direct logging
-      const mailtoUrl = `mailto:extensao@phoenixautomacoes.com.br?subject=${encodeURIComponent('Feedback de Desinstalação - Phoenix Video Downloader')}&body=${encodeURIComponent(
-        `Motivo: ${reasonVal}\nSite com Falha: ${failUrl}\nComentários: ${feedbackComments}\nEmail de contato: ${feedbackEmail}`
-      )}`;
+      const reasonLabels = {
+        'site_fail': 'O download falhou em um site específico',
+        'no_detect': 'Não detectou o vídeo que eu estava assistindo',
+        'youtube': 'Pensei que baixava vídeos do YouTube',
+        'performance': 'Problema técnico ou lentidão no navegador',
+        'pricing': 'Gostaria de mais recursos no plano gratuito',
+        'other': 'Outro motivo'
+      };
 
-      setTimeout(() => {
+      const payload = {
+        "Motivo da Desinstalação": reasonLabels[reasonVal] || reasonVal,
+        "Site ou URL": failUrl || 'Não informado',
+        "Comentários / Sugestões": feedbackComments || 'Sem comentários adicionais',
+        "E-mail do Usuário": feedbackEmail || 'Não informado (anônimo)',
+        "_subject": `[Feedback Desinstalação] ${reasonLabels[reasonVal] || reasonVal}`,
+        "_template": "table",
+        "_captcha": "false"
+      };
+
+      if (feedbackEmail) {
+        payload["_replyto"] = feedbackEmail;
+      }
+
+      try {
+        await fetch('https://formsubmit.co/ajax/extensao@phoenixautomacoes.com.br', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error('Erro ao enviar feedback:', err);
+      } finally {
         form.classList.add('hidden');
         thankYouCard.classList.remove('hidden');
-      }, 600);
+      }
     }
   </script>
 
